@@ -1,0 +1,1 @@
+SELECT "languageId" FROM languagesusers JOIN users ON users.id=languagesusers."userId" AND "userId"=1 JOIN languages on languagesusers."languageId"=languages.id

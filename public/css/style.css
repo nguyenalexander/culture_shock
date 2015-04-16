@@ -1,0 +1,103 @@
+/* MAIN PAGE CSS */
+.index-body {
+  background-image: url('http://i.huffpost.com/gen/1902909/images/o-PEOPLE-TALKING-facebook.jpg');
+  background-size: 100%;
+}
+
+.navbar {
+  border-radius: none;
+}
+
+.navbar-default {
+  background-color: rgba(0,0,0,.3);
+  border: none;
+}
+
+.navbar-default .navbar-nav>li>.signup {
+  color: rgba(255,255,235,.9);
+}
+
+.title {
+  font-family: "HelveticaNeueThinExtended", "HelveticaNeue-Thin-Extended", "Helvetica Neue Thin Extended", "HelveticaNeueThin", "HelveticaNeue-Thin", "Helvetica Neue Thin", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosRegular', "Arial", sans-serif; font-weight:200; font-stretch:expanded;
+  font-size: 115px;
+
+}
+
+.signup-button {
+  color: black;
+  font-family: "HelveticaNeueBlack", "HelveticaNeue-Black", "Helvetica Neue Black", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosBold', "Arial Black", sans-serif; font-weight:800; font-stretch:normal;
+  font-size: 45px;
+}
+
+.valign {
+  margin-top: 30%;
+}
+
+@media (min-width: 768px) {
+  .navbar {
+    border-radius: none;
+  }
+}
+
+/* AUTH PAGE CSS */
+
+.navbar-default .navbar-nav>li>.home {
+  color: rgba(255,255,235,.9);
+}
+
+/* AUTH PAGE 1 CSS */
+.language-select {
+  overflow: auto;
+  max-height: 400px;
+}
+
+/* HOME CSS */
+.dropdown {
+  background-color: rgba(0,0,0,0);
+  border-color: rgba(0,0,0,0);
+}
+
+.navbar-default .navbar-nav>li>a {
+  color:white;
+}
+nav ul {
+  color: white;
+  list-style-type:none;
+  margin:0;
+  padding:0;
+}
+nav ul li {
+  display:inline-block;
+  position:relative;
+}
+nav li ul {
+    background-color:rgb(225,75,75);
+    position:absolute;
+    left:0;
+    top:40px;
+    width:200px;
+}
+
+nav a {
+    line-height:40px;
+    padding:0 12px;
+    margin:0 12px;
+}
+nav a {
+    color:#fff;
+    text-decoration:none;
+    display:block;
+}
+nav a:hover,
+nav a:focus,
+nav a:active {
+    color:rgb(50,50,50);
+}
+.dropdown-menu {
+  display:none;
+}
+
+/* PROFILE CSS*/
+.bio {
+  height: 150px;
+}

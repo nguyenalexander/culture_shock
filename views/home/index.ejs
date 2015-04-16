@@ -1,0 +1,23 @@
+<% include ../partials/header-logged.ejs %>
+<div class="row">
+  <div class="col-md-12">
+    <h1>connect</h1>
+  <% include ../partials/alerts.ejs %>
+    <hr>
+    <div class="row">
+      <div class="col-md-6 col-md-offset-2">
+      <% language.forEach(function(obj){ %>
+      <h1><%= obj.name %><h1>
+      <h2>users:</h2>
+        <ul>
+        <% userData.forEach(function(user){ %>
+        <% if (obj.id == user.languageId) {%>
+          <li><a href="/profile/<%=user.userId%>"><%= user.username %></a></li>
+        <%}%>
+        <% }) %>
+        </ul>
+      <% }) %>
+    </div>
+  </div>
+</div>
+<% include ../partials/footer.ejs %>

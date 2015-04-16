@@ -1,0 +1,22 @@
+<% include ../partials/header-logged.ejs %>
+<div class="col-md-6">
+  <h1>update your profile</h1>
+  <hr>
+  <div class="form-group">
+  <form enctype="multipart/form-data" id="update" class="form profile-update" method="post" action="/profile/update"> <label for="bio">tell us about yourself</label>
+    <textarea class="form-control" rows="5" name="bio" form="update"></textarea>
+    <hr>
+    <label for="picture">upload a profile picture</label>
+    <input type="file" class="form-control" placeholder="upload a profile picture!" name="picture">
+    <hr>
+    <label for="hobbies">what interests you?</label>
+    <input type="text" class="form-control" placeholder="Enter your interests..." name="hobbies">
+    <hr>
+    <label for="telephone">enter your telephone number (optional)</label>
+    <input type="text" class="form-control" placeholder="Enter your telephone number" name="telephone">
+    <hr>
+    <input type="submit" value="update" class="btn btn-primary">
+  </form>
+  </div>
+</div>
+<% include ../partials/footer.ejs %>

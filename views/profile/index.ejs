@@ -1,0 +1,26 @@
+<% include ../partials/header-logged.ejs %>
+<div class="col-md-12">
+  <h1><%=user.username%>'s profile</h1>
+  <div class="row">
+    <div class="col-md-6">
+    <div class="languages">
+      <h2>Known Languages</h2>
+      <ul class="language-list">
+      <% languageData.forEach(function(language) { %>
+        <li><%=language.name%>
+          <ul>
+          <li>Reading/Writing Fluency: <%=language.languagesusers.wr_fluency%>
+              Speaking Fluency: <%=language.languagesusers.sp_fluency%></li>
+              </ul>
+        </li>
+      <% }) %>
+      </ul>
+    </div>
+    </div>
+  </div>
+
+<% include ../partials/alerts.ejs %>
+  <hr>
+</div>
+<% include ../partials/footer.ejs %>
+

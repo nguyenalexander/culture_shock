@@ -1,0 +1,49 @@
+<% include ../partials/header-auth.ejs %>
+<div class="col-md-6">
+  <h1>rate your fluency</h1>
+  <hr>
+</div>
+
+
+<div class="col-md-6 col-md-offset-3">
+  <form method="post" class="form" action="/auth/signup/facebook/2">
+    <% languages.forEach(function(language){%>
+    <h2><%=language.name%></h2>
+    <label for="language">Reading/Writing Fluency</label>
+    <input type="hidden" name="language" value="<%= language.id %>">
+    <input type="range" name="wr_fluency_<%= language.id %>" min="0" max="10" value="0" step="1" list="language-ticks">
+    <datalist id="language-ticks">
+        <option>0</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
+        <option>9</option>
+        <option>10</option>
+    </datalist>
+    <label for="language">Speaking Fluency</label>
+    <input type="range" name="sp_fluency_<%= language.id %>" min="0" max="10" value="0" step="1" list="language-ticks">
+    <datalist id="language-ticks">
+        <option>0</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
+        <option>9</option>
+        <option>10</option>
+    </datalist>
+    <% }) %>
+    <input class="btn btn-default" type="submit" value="Submit now">
+</form>
+<div id="status">
+</div>
+</div>
+<% include ../partials/footer.ejs %>
