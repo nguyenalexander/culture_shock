@@ -1,24 +1,33 @@
 <% include ../partials/header-auth.ejs %>
-<div class="col-md-6">
-  <h1>sign up</h1>
-  <hr>
-  <form class="form" method="post" action="/auth/signup">
-    <input type="email" class="form-control" placeholder="Enter your e-mail" name="email">
-    <br><br>
-    <input type="text" class="form-control" placeholder="Enter your username" name="username">
-    <br><br>
-    <input type="text" class="form-control" placeholder="Enter your name" name="name">
-    <br><br>
-    <input type="password" class="form-control" placeholder="Choose a password" name="password">
-    <br><br>
-    <input type="password" class="form-control" placeholder="Re-type your password" name="password2">
-    <br><br>
-    <input type="location" class="form-control" placeholder="Enter your location" name="location">
-    <br><br>
-    <input type="submit" value="sign up" class="btn btn-primary">
-  </form>
-  <h4> or </h4>
-  <h2> login with facebook </h2>
-  <a href="/auth/login/facebook">Login with Facebook</a>
+<div class="row signup-row">
+  <div class="col-md-4 signup-col">
+    <h2 class="signup-titles">sign up</h2>
+    <hr>
+    <form class="form" method="post" action="/auth/signup">
+      <input type="email" class="form-control" placeholder="Enter your e-mail" name="email">
+      <hr class="hr-divider">
+      <input type="text" class="form-control" placeholder="Enter your username" name="username">
+      <hr class="hr-divider">
+      <input type="text" class="form-control" placeholder="Enter your name" name="name">
+      <hr class="hr-divider">
+      <input type="password" class="form-control" placeholder="Choose a password" name="password">
+      <hr class="hr-divider">
+      <input type="password" class="form-control" placeholder="Re-type your password" name="password2">
+      <hr class="hr-divider">
+      <input type="location" class="form-control" placeholder="Enter your location" name="location">
+      <hr>
+      <input type="submit" value="sign up" class="btn btn-primary signup-btn">
+    </form>
+  </div>
+  <div class="col-md-4 signup-col signup-or">
+    <hr>
+    <h3 class="or"><em>or</em></h3>
+    <hr>
+  </div>
+  <div class="col-md-4 signup-col">
+    <h2 class="signup-titles"> sign up with facebook </h2>
+    <hr>
+    <a href="/auth/login/facebook"><i class="fa fa-facebook-official fa-5x"></i></a>
+  </div>
 </div>
 <% include ../partials/footer.ejs %>

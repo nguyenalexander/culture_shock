@@ -6,6 +6,7 @@ var bodyParser = require("body-parser")
 var session = require("express-session")
 var flash = require('connect-flash');
 var multer = require('multer');
+var geocoder = require('geocoder')
 var passport = require('passport'),
   LocalStrategy = require('passport-local').Strategy,
   FacebookStrategy = require('passport-facebook').Strategy;

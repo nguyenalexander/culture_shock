@@ -7,17 +7,37 @@
     <div class="row">
       <div class="col-md-6 col-md-offset-2">
       <% language.forEach(function(obj){ %>
-      <h1><%= obj.name %><h1>
-      <h2>users:</h2>
-        <ul>
-        <% userData.forEach(function(user){ %>
-        <% if (obj.id == user.languageId) {%>
-          <li><a href="/profile/<%=user.userId%>"><%= user.username %></a></li>
-        <%}%>
-        <% }) %>
-        </ul>
+      <div class="language">
+      <h1 class="language-toggle"><%= obj.name %></h1>
+        <div class="modal fade bs-modal-lg" tabindex="-1" role="dialog" aria-labelledby="language-modal" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <h2>users:</h2>
+                <ul>
+                <% userData.forEach(function(user){ %>
+                <% if (obj.id == user.languageId) {%>
+                  <li><a href="/profile/<%=user.userId%>"><%= user.username %></a></li>
+                <%}%>
+                <% }) %>
+                </ul>
+            </div>
+          </div>
+        </div>
+      </div>
       <% }) %>
+
+
+      <div id="mapCon">
+        <div id="map"></div>
+      </div>
+
     </div>
   </div>
 </div>
+
+   <script>
+    var myPoints = <%- JSON.stringify(userData) %>;
+    drawMap(myPoints)
+  </script>
+
 <% include ../partials/footer.ejs %>

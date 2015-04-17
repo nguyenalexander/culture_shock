@@ -4,12 +4,16 @@
   <title></title>
   <link rel="stylesheet" media="screen" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   <script src="//code.jquery.com/jquery.js"></script>
+  <script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
   <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   <script src="/js/script.js"></script>
   <link rel="stylesheet" href="/css/style.css">
   <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+  <link href='//api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.css' rel='stylesheet'>
+  <script src='//api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.js'></script>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 </head>
-  <nav class="navbar navbar-default">
+  <nav class="navbar navbar-default navbar-static-top">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -24,6 +28,7 @@
     <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav navbar-left navbar-link">
       <li class="signup-li-item"><a class="home" href="/">speaktome</a></li>
+    </ul>
 <!--         <form class="navbar-form navbar-left form" action="/movies/" method="get">
           <div class="form-group">
             <input type="text" name="id" class="form-control" placeholder="Search by ID here.">
@@ -32,5 +37,6 @@
         </form> -->
       </div>
     </nav>
-  <body>
+  <body class="signup-body">
     <div class="container">
+<% include ./alerts.ejs %>

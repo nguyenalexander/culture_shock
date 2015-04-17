@@ -4,7 +4,7 @@
   <img src="<%=imgUrl%>">
   </div>
   <div class="col-md-4">
-  <h2><%=user.username%></h2><a href="/profile/update"><span class="glyphicon glyphicon-pencil"></a></span>
+  <h2><%=userData.username%></h2>
   </div>
 </div>
 <hr>
@@ -26,13 +26,13 @@
   </div>
   <div class="col-md-6">
     <div class="userData">
-    <h4> About <%=user.username%></h4>
+    <h4> About <%=userData.username%></h4>
       <h5><%= profileData.bio %></h5>
-    <h4><%=user.username%>'s interests</h4>
+    <h4><%=userData.username%>'s interests</h4>
       <h5><%= profileData.hobbies %></h5>
-    <h4><%=user.username%>'s contact information</h4>
+    <h4><%=userData.username%>'s contact information</h4>
       <h5><%= profileData.phone %></h5>
-      <h5>Send <%=user.username%> an email!</h5>
+      <h5>Send <%=userData.username%> an email!</h5>
       <a href="mailto:<%=userData.email%>?subject='Hey <%=userData.username%>! - speaktome'"><span class="glyphicon glyphicon-envelope"></span></a>
   </div>
   </div>

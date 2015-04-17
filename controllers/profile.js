@@ -9,12 +9,51 @@ router.get('/', function(req,res){
   db.user.find(
     {where:
       {id:req.user.id},
-      include:[db.language]
+      include:[db.language,db.profile]
     })
-    .then(function(user){
-      res.render('profile/index', {userData:user,languageData:user.languages});
-    })
+  .then(function(user){
+    var img = user.profile.picture;
+    console.log(user.profile)
+    var imgUrl = cloudinary.url(img, { width: 150, height: 150, crop: 'fill'});
+    res.render('profile/index', {userData:user,languageData:user.languages,profileData:user.profile,imgUrl:imgUrl});
+  })
 })
+
+router.get('/create', function(req,res){
+  res.render('profile/create')
+})
+
+router.get('/:id', function(req,res){
+  db.user.find(
+    {where:
+      {id:req.params.id},
+      include:[db.language,db.profile]
+    })
+  .then(function(user){
+    var img = user.profile.picture;
+    console.log(user.profile)
+    var imgUrl = cloudinary.url(img, { width: 150, height: 150, crop: 'fill'});
+    res.render('profile/user', {userData:user,languageData:user.languages,profileData:user.profile,imgUrl:imgUrl,img:img});
+  })
+})
+
+router.post('/create', function(req,res){
+  var uploadedFile = __dirname+'/../'+req.files.picture.path;
+  cloudinary.uploader.upload(uploadedFile,function(result){
+    db.user.find({where:{id:req.user.id}})
+      .then(function(user){
+        db.profile.findOrCreate({where:{
+        userId:req.user.id,
+        picture:result.public_id,
+        bio:req.body.bio,
+        hobbies:req.body.hobbies,
+        phone:req.body.telephone
+    }}).then(function(profile){
+        res.redirect('/home')
+      });
+    });
+  });
+});
 
 router.get('/update', function(req,res){
   res.render('profile/update')
@@ -23,15 +62,19 @@ router.get('/update', function(req,res){
 router.post('/update', function(req,res){
   var uploadedFile = __dirname+'/../'+req.files.picture.path;
   cloudinary.uploader.upload(uploadedFile,function(result){
-    db.profile.findOrCreate(
-      {where:{userId:req.user.id},defaults:{picture:result.public_id,bio:req.body.bio,hobbies:req.body.hobbies,phone:req.body.telephone}
-    }).then(function(profile){
-      console.log(profile)
-      req.flash('success', 'Congrats! You are now a member of speaktome!');
-      res.redirect('/home')
-    })
-  })
-})
+        db.profile.update({
+        picture:result.public_id,
+        bio:req.body.bio,
+        hobbies:req.body.hobbies,
+        phone:req.body.telephone
+      },{where:
+         {
+          userId:req.user.id
+      }}).then(function(profile){
+        res.redirect('/home')
+      });
+  });
+});
 
 // router.get('/:username')
 

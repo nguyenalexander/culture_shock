@@ -1,16 +1,18 @@
 <% include ../partials/header-auth.ejs %>
-<div class="col-md-6">
-  <h1>what do you speak?</h1>
+<div class="col-md-6 col-md-offset-3">
+  <h1 class="signup-titles">what do you speak?</h1>
   <hr>
   <form method="post" class="form" action="/auth/signup/facebook/1">
+  <input type="text" class="form-control" id="checkfilter" placeholder="search for a language">
+  <hr class="hr-divider">
   <fieldset class="language-select">
   <% languageArr.forEach(function(item){ %>
-  <input class="language-check" type="checkbox" name="language" value="<%=item%>"><%=item%><br \>
+   <label for="language-check" class="language-name"><input class="language-check" type="checkbox" name="language" value="<%=item%>"> <%=item%></label>
   <% }) %>
   </fieldset>
-    <input class="btn btn-default" type="submit" value="Submit now">
+    <div class="btn-div">
+    <input class="btn btn-default language-submit-btn" type="submit" value="Submit now">
+    </div>
   </form>
-<div id="status">
-</div>
 </div>
 <% include ../partials/footer.ejs %>

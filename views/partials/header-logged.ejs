@@ -4,8 +4,17 @@
   <title></title>
   <link rel="stylesheet" media="screen" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   <script src="//code.jquery.com/jquery.js"></script>
+  <script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
   <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   <script src="/js/script.js"></script>
+  <script src='//api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.js'></script>
+  <link href='//api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.css' rel='stylesheet'>
+  <script src='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js'></script>
+  <link href='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css' rel='stylesheet'>
+  <link href='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css' rel='stylesheet'>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no'>
+
+
   <link rel="stylesheet" href="/css/style.css">
   <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 </head>
@@ -22,6 +31,9 @@
 
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse navbar-ex1-collapse">
+    <ul class="nav navbar-nav navbar-left navbar-link">
+      <li class="signup-li-item"><a class="home" href="/">speaktome</a></li>
+    </ul>
     <nav>
       <ul class="nav navbar-nav navbar-right navbar-link">
         <li class="dropdown">
@@ -42,4 +54,4 @@
         </form> -->
       </div>
     </nav>
-    <div class="container">
+    <div class="container logged-container">

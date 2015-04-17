@@ -11,7 +11,7 @@ router.get('/', function(req,res){
       {where:{id:req.user.id},
       include:[db.language]
     }).then(function(user){
-        db.sequelize.query('select users.id,users.name,users.email,users.username,languagesusers.id,languagesusers."userId",languagesusers."languageId",languagesusers."sp_fluency",languagesusers."wr_fluency",languages.id,languages.name from users, languagesusers, languages where users.id=languagesusers."userId" and languagesusers."languageId"=languages.id and "languageId" in (SELECT "languageId" FROM languagesusers JOIN users ON users.id=languagesusers."userId" AND "userId"='+req.user.id+'  JOIN languages on languagesusers."languageId"=languages.id)')
+        db.sequelize.query('SELECT * from users, languagesusers, languages where users.id=languagesusers."userId" and languagesusers."languageId"=languages.id and "languageId" in (SELECT "languageId" FROM languagesusers JOIN users ON users.id=languagesusers."userId" AND "userId"='+req.user.id+'  JOIN languages on languagesusers."languageId"=languages.id)')
           .spread(function(userData,created){
             res.render('home/',{userData:userData,language:user.languages,thisUser:req.user.id})
           })

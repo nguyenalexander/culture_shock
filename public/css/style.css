@@ -1,15 +1,21 @@
+/* CSS THAT APPLIES TO ALL */
+
+.container {
+  width: 80%;
+  height: 100%;
+}
+
+
 /* MAIN PAGE CSS */
 .index-body {
   background-image: url('http://i.huffpost.com/gen/1902909/images/o-PEOPLE-TALKING-facebook.jpg');
   background-size: 100%;
-}
-
-.navbar {
-  border-radius: none;
+  background-repeat: no-repeat
 }
 
 .navbar-default {
   background-color: rgba(0,0,0,.3);
+  border-radius: 0 !important;
   border: none;
 }
 
@@ -41,14 +47,80 @@
 
 /* AUTH PAGE CSS */
 
+.signup-body {
+  background-color: rgba(255,255,233,.1);
+}
+
 .navbar-default .navbar-nav>li>.home {
   color: rgba(255,255,235,.9);
+}
+
+.fa {
+  color: rgba(0,10,10,.9);
+}
+
+.signup-col {
+  text-align:center;
+  height: 100%;
+  position: relative;
+}
+
+.signup-or {
+  vertical-align: middle;
+  position: relative;
+  margin-top: 9.7%
+}
+
+.signup-row {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.signup-titles {
+  font-size: 25px;
+}
+
+.signup-btn {
+  background-color: rgba(0,10,10,.9);
+  border-color: rgba(0,10,10,.9);
+  color: rgba(255,255,235,.9)
+}
+.signup-btn:hover {
+  background-color: rgba(10,10,10,.4);
+  border-color: rgba(10,10,10,.4);
+  color: rgba(0,10,10,.9);
+}
+.hr-divider {
+  width: 75%;
 }
 
 /* AUTH PAGE 1 CSS */
 .language-select {
   overflow: auto;
-  max-height: 400px;
+  min-height:350px;
+  max-height: 375px;
+}
+.language-name {
+  display: block;
+  font-weight: normal !important;
+}
+.language-submit-btn {
+  background-color: rgba(0,10,10,.9);
+  border-color: rgba(0,10,10,.9);
+  color: rgba(255,255,235,.9);
+}
+.language-submit-btn:hover {
+  background-color: rgba(10,10,10,.4);
+  border-color: rgba(10,10,10,.4);
+  color: rgba(0,10,10,.9);
+}
+.btn-div {
+  text-align: center;
+  padding-top: 10px;
+}
+.logged-container {
+  width: 90%;
 }
 
 /* HOME CSS */
@@ -96,8 +168,18 @@ nav a:active {
 .dropdown-menu {
   display:none;
 }
+#mapCon{
+  display: visible;
+  border: 2px black;
+}
+#map{
+  width:100%;
+  height: 500px;
+
+}
 
 /* PROFILE CSS*/
 .bio {
   height: 150px;
 }
+

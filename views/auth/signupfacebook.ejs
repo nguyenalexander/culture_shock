@@ -1,13 +1,15 @@
 <% include ../partials/header-auth.ejs %>
-<div class="col-md-6">
-  <h1>sign up</h1>
-  <hr>
-  <form class="form" method="post" action="/auth/signup/facebook">
-    <input type="text" class="form-control" placeholder="Enter your username" name="username">
+<div class="row signup-row">
+  <div class="col-md-5 signup-col">
+    <h2 class="signup-titles">sign up</h2>
     <hr>
+    <form class="form" method="post" action="/auth/signup/facebook">
+    <input type="text" class="form-control" placeholder="Enter your username" name="username">
+    <hr class="hr-divider">
     <input type="location" class="form-control" placeholder="Enter your location" name="location">
     <hr>
-    <input type="submit" value="sign up" class="btn btn-primary">
-  </form>
+    <input type="submit" value="sign up" class="btn btn-primary signup-btn">
+    </form>
+  </div>
 </div>
 <% include ../partials/footer.ejs %>

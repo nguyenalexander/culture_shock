@@ -2,99 +2,110 @@
 var db = require('./models');
 var async = require('async')
 
-
-  if (req.isAuthenticated()){
-    var totalLanguages = [];
-    db.sequelize.query('SELECT * FROM languagesusers JOIN users ON users.id=languagesusers."userId" AND "userId"='+req.user.id+'')
-      .spread(function(userData,created){
-        async.each(userData,function(obj,callback){
-          db.sequelize.query('SELECT * FROM languagesusers WHERE "languageId"='+obj.languageId+'')
-            .spread(function(id,created){
-              totalLanguages.concat(id);
-              console.log(totalLanguages)
-            })
-        })
-        // res.send(userData)
-        // async.each(userData,function(data, callback){
-        //   db.languagesusers.findAll({where:{languageId:data.languageId}})
-        //     .then(function(e){
-        //       console.log(e)
-        //     })
-        // })
-      })
-      console.log(totalLanguages)
-    // db.user.find(
-    //   {where:{id:req.user.id},
-    //   include:[db.language]
-    // }).then(function(user){
-    //     async.each(user.languages,function(u,callback){
-    //       db.languagesusers.findAll({where:{languageId:u.id}})
-    //         .then(function(usersId){
-    //           async.each(usersId,function(id,callback){
-    //             db.user.findAll({where:{id:id.userId}}).then(function(specificUser){
-    //               callback();
-    //             })
-    //           },function(err){
-    //             if (err) throw err;
-    //             res.render('home/index',{users:specificUser,languages:user.languages})
-    //           })
-    //         })
-    //     })
-    //   })
-  }else{
-    res.redirect('/')
-  }
-})
+  // db.user.findOrCreate({where:{email: 'test@gmail.com', name: 'test', password: 'test', username: 'rwar', location: 'seattle'}})
+  // .spread(function(user,created){
+  //       console.log(user)
+  //     })
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-return;
-
-db.user.find({where:{email:'trawgdor@hotmail.com'},
-include: [db.language]})
+db.user.find(19)
     .then(function(user){
-      // console.log(user.languages[0].languagesusers)
-      db.languagesusers.findAll({where:{userId:user.id}})
-        .then(function(ul){
-          console.log('this is the callback of languagesusers',ul)
-          async.each(req.body.language,(function(lang,callback){
-            console.log('language id',lang)
-            var wr_fluency = req.body["wr_fluency_"+lang]
-            var sp_fluency = req.body["sp_fluency_"+lang]
-            ul.update(
-              {
-                wr_fluency:wr_fluency,
-                sp_fluency:sp_fluency
-            },
-              {where:
-                {
-                  userId:user.id,
-                  languageId:lang
-                }}).then(function(){
-                  callback();
-                })
-          },function(err){
-            res.send('it works!')
-          }))
-        })
-        });
+      user.location='Seattle2';
+      user.save();
+    })
 
-              // db.user.findAll().then(function(allUsers){
-              //   console.log(allUsers)
-              //   console.log('these are the users',usersId)
-              //   res.render('home/index')
+//   // if (req.isAuthenticated()){
+//   //   var totalLanguages = [];
+//   //   db.sequelize.query('SELECT * FROM languagesusers JOIN users ON users.id=languagesusers."userId" AND "userId"='+req.user.id+'')
+//   //     .spread(function(userData,created){
+//   //       async.each(userData,function(obj,callback){
+//   //         db.sequelize.query('SELECT * FROM languagesusers WHERE "languageId"='+obj.languageId+'')
+//   //           .spread(function(id,created){
+//   //             totalLanguages.concat(id);
+//   //             console.log(totalLanguages)
+//   //           })
+//   //       })
+//   //       // res.send(userData)
+//   //       // async.each(userData,function(data, callback){
+//   //       //   db.languagesusers.findAll({where:{languageId:data.languageId}})
+//   //       //     .then(function(e){
+//   //       //       console.log(e)
+//   //       //     })
+//   //       // })
+//   //     })
+//   //     console.log(totalLanguages)
+//     // db.user.find(
+//     //   {where:{id:req.user.id},
+//     //   include:[db.language]
+//     // }).then(function(user){
+//     //     async.each(user.languages,function(u,callback){
+//     //       db.languagesusers.findAll({where:{languageId:u.id}})
+//     //         .then(function(usersId){
+//     //           async.each(usersId,function(id,callback){
+//     //             db.user.findAll({where:{id:id.userId}}).then(function(specificUser){
+//     //               callback();
+//     //             })
+//     //           },function(err){
+//     //             if (err) throw err;
+//     //             res.render('home/index',{users:specificUser,languages:user.languages})
+//     //           })
+//     //         })
+//     //     })
+//     //   })
+//   }else{
+//     res.redirect('/')
+//   }
+// })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// return;
+
+// db.user.find({where:{email:'trawgdor@hotmail.com'},
+// include: [db.language]})
+//     .then(function(user){
+//       // console.log(user.languages[0].languagesusers)
+//       db.languagesusers.findAll({where:{userId:user.id}})
+//         .then(function(ul){
+//           console.log('this is the callback of languagesusers',ul)
+//           async.each(req.body.language,(function(lang,callback){
+//             console.log('language id',lang)
+//             var wr_fluency = req.body["wr_fluency_"+lang]
+//             var sp_fluency = req.body["sp_fluency_"+lang]
+//             ul.update(
+//               {
+//                 wr_fluency:wr_fluency,
+//                 sp_fluency:sp_fluency
+//             },
+//               {where:
+//                 {
+//                   userId:user.id,
+//                   languageId:lang
+//                 }}).then(function(){
+//                   callback();
+//                 })
+//           },function(err){
+//             res.send('it works!')
+//           }))
+//         })
+//         });
+
+//               // db.user.findAll().then(function(allUsers){
+//               //   console.log(allUsers)
+//               //   console.log('these are the users',usersId)
+//               //   res.render('home/index')
 
 
                   // res.send(specificUser)
@@ -125,53 +136,53 @@ include: [db.language]})
         // console.log('data writing',parseInt(req.body.wr_fluency));
         //req.body.language will be languageid
         //[3,4,1]
-        // console.log('language data',parseInt(req.body.language));
-          //use async, first parameter is the language id, then
-          //function which takes in lang and callback, and lang will be the return of req.
-          //
-        async.each(req.body.language,function(lang,callback){
-          req.body.wr_fluency[lang]
-          db.language.update({wr_fluency:''},{where:{userId:,languageId:lang}}).then(function(){
-             callback();
-         })
-        },function(err){
-          //render page here
-        })
+//         // console.log('language data',parseInt(req.body.language));
+//           //use async, first parameter is the language id, then
+//           //function which takes in lang and callback, and lang will be the return of req.
+//           //
+//         async.each(req.body.language,function(lang,callback){
+//           req.body.wr_fluency[lang]
+//           db.language.update({wr_fluency:''},{where:{userId:,languageId:lang}}).then(function(){
+//              callback();
+//          })
+//         },function(err){
+//           //render page here
+//         })
 
 
-      //   db.languagesusers.findAll({where:{userId:data.id}})
-      //     .then(function(e){
-      //       // console.log(e)
-      //       var name = data.languages.name;
-      //       console.log(name)
-      //       e[0].updateAttributes
-      //         ({sp_fluency:parseInt(req.body.sp_fluency),wr_fluency:parseInt(req.body.wr_fluency)})
-      //       .then(function(x){
-      //         res.send(x)
-      //       })
-      //     })
-      // })
-
-
-
+//       //   db.languagesusers.findAll({where:{userId:data.id}})
+//       //     .then(function(e){
+//       //       // console.log(e)
+//       //       var name = data.languages.name;
+//       //       console.log(name)
+//       //       e[0].updateAttributes
+//       //         ({sp_fluency:parseInt(req.body.sp_fluency),wr_fluency:parseInt(req.body.wr_fluency)})
+//       //       .then(function(x){
+//       //         res.send(x)
+//       //       })
+//       //     })
+//       // })
 
 
 
-return;
 
 
-router.post('/signup/2', function(req,res){
-  db.user.find({where:{email:req.user.email},
-  include: [db.language]})
-      .then(function(data){
-        // console.log(req.body.wr_fluency)
-        async.each(req.body.language,(function(lang,callback){
-          console.log('language id',lang)
-          console.log('wr fluency value',req.body["wr_fluency_"+lang])
-          console.log('speaking fluency value',req.body["sp_fluency_"+lang])
-          db.update(
-            {wr_fluency:req.body["wr_fluency_"+lang],sp_fluency:req.body["wr_fluency_"+lang]},{where:{userId:req.user.id,languageId:lang}})
-        }))
+
+// return;
+
+
+// router.post('/signup/2', function(req,res){
+//   db.user.find({where:{email:req.user.email},
+//   include: [db.language]})
+//       .then(function(data){
+//         // console.log(req.body.wr_fluency)
+//         async.each(req.body.language,(function(lang,callback){
+//           console.log('language id',lang)
+//           console.log('wr fluency value',req.body["wr_fluency_"+lang])
+//           console.log('speaking fluency value',req.body["sp_fluency_"+lang])
+//           db.update(
+//             {wr_fluency:req.body["wr_fluency_"+lang],sp_fluency:req.body["wr_fluency_"+lang]},{where:{userId:req.user.id,languageId:lang}})
+//         }))
 // db.user.find({
 //   where:{id:1},
 //   include:[db.language]

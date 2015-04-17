@@ -3,6 +3,7 @@ var router = express.Router();
 var db = require('../models');
 var passport = require('passport');
 var async = require('async');
+var flash = require('connect-flash')
 
 var languageArr = ["Afrikaans","Akan","Albanian",
 "Amharic","Arabic","Armenian",
@@ -59,14 +60,20 @@ router.get('/signup', function(req,res){
 })
 
 router.post('/signup', function(req,res){
-  db.user.findOrCreate({where:{email: req.body.email, name: req.body.name, password: req.body.password, username: req.body.username, location: req.body.location}})
+  db.user.findOrCreate({where:{email: req.body.email, name: req.body.name, password: req.body.password, username: req.body.username, location: req.body.location},include:[db.profile]})
   .spread(function(user,created){
     if(created){
       req.login(user,function(err){
-        if(err) throw err;
+        if(err) req.flash('danger',err);
         res.redirect('/auth/signup/1')
       })
+    }else{
+      req.flash('danger','User could not be created.')
+      res.redirect('/main')
     }
+  }).catch(function(err){
+    req.flash('danger','User could not be created.');
+    res.redirect('/main')
   })
 })
 
@@ -141,7 +148,7 @@ router.post('/signup/2', function(req,res){
         })
     },function(err){
       if (err) throw err;
-      res.redirect('/profile/update')
+      res.redirect('/profile/create')
     })
   })
 })
@@ -161,15 +168,11 @@ router.get('/signup/facebook', function(req,res){
 })
 
 router.post('/signup/facebook', function(req,res){
-    db.user.update({
-      username: req.body.username,
-      location: req.body.location
-    },
-    {where:
-      {
-        id: req.user.id,
-      }})
-    .spread(function(user,created){
+    db.user.find({where:{id:req.user.id}})
+    .then(function(user){
+      user.location=req.body.location;
+      user.username=req.body.username;
+      user.save();
       res.redirect('/auth/signup/facebook/1')
     })
   })
@@ -180,6 +183,7 @@ router.get('/signup/facebook/1', function(req,res){
 
 router.post('/signup/facebook/1', function(req,res){
   var selectedLanguageArr = req.body.language;
+  if (selectedLanguageArr instanceof Array) {
   async.reduce(selectedLanguageArr, {}, function(memo, item, callback){
     callback(null,memo+item)
     db.user.find({where:{id:req.user.id}})
@@ -193,10 +197,22 @@ router.post('/signup/facebook/1', function(req,res){
       })
     })
 
-  }, function(err, result){
-    if (err) throw err;
+    }, function(err, result){
+      if (err) throw err;
+    })
+  }else{
+    db.user.find({where:{id:req.user.id}})
+      .then(function(user){
+        db.language.findOrCreate({where:{name:req.body.language}})
+          .spread(function(language,created){
+            language.addUser(user)
+              .then(function(){
+                res.redirect('/auth/signup/2')
+              })
+          })
+      })
+    }
   })
-})
 
 
 router.get('/signup/facebook/2', function(req,res){
@@ -233,7 +249,7 @@ router.post('/signup/facebook/2', function(req,res){
         })
     },function(err){
       if (err) throw err;
-      res.redirect('/profile/update')
+      res.redirect('/profile/create')
     })
   })
 })
@@ -297,7 +313,6 @@ router.get('/callback/:provider', function(req,res){
   }
   passport.authenticate(req.params.provider,
    function(err,user,info){
-    console.log('this is user',req.user)
     if(user){
       req.login(user, function(err){
         if(err) throw err;
