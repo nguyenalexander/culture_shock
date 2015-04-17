@@ -12,7 +12,7 @@ var passport = require('passport'),
   FacebookStrategy = require('passport-facebook').Strategy;
 
 var NODE_ENV = process.env.NODE_ENV || 'development';
-var BASE_URL = (NODE_ENV === 'production') ? 'https://speaktome.herokuapps.com' : 'http://localhost:3000';
+var BASE_URL = (NODE_ENV === 'production') ? 'https://speak-to-me.herokuapp.com' : 'http://localhost:3000';
 
 //passport setup - user serialisation //
 passport.serializeUser(function(user,done){
