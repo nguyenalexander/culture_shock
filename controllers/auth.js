@@ -72,7 +72,8 @@ router.post('/signup', function(req,res){
       res.redirect('/main')
     }
   }).catch(function(err){
-    req.flash('danger','User could not be created.');
+    console.log(err)
+    req.flash('danger','This is the other user could not be created log');
     res.redirect('/main')
   })
 })
