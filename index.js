@@ -148,6 +148,11 @@ app.use('/auth',require('./controllers/auth.js'));
 app.use('/home', require('./controllers/home.js'));
 app.use('/language', require('./controllers/language.js'));
 
+app.get('*', function(req,res){
+  req.flash('danger','404, page not found!')
+  res.redirect('/main')
+})
+
 app.listen(process.env.PORT || 3000, function(){
   console.log("Hello, server is up and running.");
 })

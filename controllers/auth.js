@@ -73,7 +73,7 @@ router.post('/signup', function(req,res){
     }
   }).catch(function(err){
     console.log(err)
-    req.flash('danger','This is the other user could not be created log');
+    req.flash('danger','Unknown error. Please try again!')
     res.redirect('/main')
   })
 })

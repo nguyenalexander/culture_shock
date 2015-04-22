@@ -38,7 +38,9 @@ router.get('/:id', function(req,res){
 })
 
 router.post('/create', function(req,res){
-  var uploadedFile = __dirname+'/../'+req.files.picture.path;
+var uploadedFile
+if(req.files.picture){
+  uploadedFile = __dirname+'/../'+req.files.picture.path;
   cloudinary.uploader.upload(uploadedFile,function(result){
     db.user.find({where:{id:req.user.id}})
       .then(function(user){
@@ -53,6 +55,23 @@ router.post('/create', function(req,res){
       });
     });
   });
+}else{
+  uploadedFile = './public/profile-icon.png'
+  cloudinary.uploader.upload(uploadedFile,function(result){
+  db.user.find({where:{id:req.user.id}})
+    .then(function(user){
+      db.profile.findOrCreate({where:{
+      userId:req.user.id,
+      picture:result.public_id,
+      bio:req.body.bio,
+      hobbies:req.body.hobbies,
+      phone:req.body.telephone
+  }}).then(function(profile){
+      res.redirect('/home')
+    });
+  });
+});
+}
 });
 
 router.get('/update', function(req,res){

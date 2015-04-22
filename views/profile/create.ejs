@@ -1,17 +1,17 @@
 <% include ../partials/header-logged.ejs %>
 
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-6 col-xs-12">
       <h1>create your profile</h1>
       <hr>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 col-xs-12">
     </div>
   </div>
   <div class="row">
     <div class="form-group">
     <form enctype="multipart/form-data" id="update" class="form profile-update" method="post" action="/profile/create">
-      <div class="col-md-6">
+      <div class="col-md-6 col-xs-12">
         <label for="picture">upload a profile picture</label>
         <input type="file" class="form-control" placeholder="upload a profile picture!" name="picture">
         <hr>
@@ -19,7 +19,7 @@
         <textarea class="form-control" rows="5" name="bio" form="update"></textarea>
         <hr>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-6 col-xs-12">
       <label for="hobbies">what interests you?</label>
       <input type="text" class="form-control" placeholder="Enter your interests..." name="hobbies">
       <hr>

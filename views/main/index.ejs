@@ -1,25 +1,39 @@
-<% include ../partials/header-main %>
-<body class="index-body">
-<div class="container-fluid">
-<div class="row indexrow">
-    <div class="col-md-12 text-center">
-    <h1 class="title">speak to me</h1>
 
-<% include ../partials/alerts.ejs %>
+<body class="index-body">
+<section id="main">
+<% include ../partials/header-main %>
+  <div class="container-fluid">
+    <div class="row indexrow">
+      <div class="col-md-12 text-center col-xs-12">
+        <h1 class="title">speak to me</h1>
+
+        <% include ../partials/alerts.ejs %>
+      </div>
+    </div>
+    <div class="row subindexrow">
+      <div class="col-md-4 col-xs-4 text-center valign">
+        <a href="/auth/signup" class="btn btn-default signup-button">sign up</a>
+      </div>
+      <div class="col-md-4 col-xs-4">
+
+      </div>
+      <div class="col-md-4 col-xs-4 text-center valign">
+        <a href="#" class="btn btn-default about-button">about us</a>
+      </div>
     </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-md-4 text-center valign">
-    <a href="/auth/signup" class="signup-button">sign up</a>
+</section>
+<section id="about">
+  <div class="container-fluid">
+    <div class="row indexrow">
+      <div class="col-md-12 text-center col-xs-12">
+        <fieldset class="title">
+          <legend>about</legend>
+        </fieldset>
+      </div>
+    </div>
   </div>
-  <div class="col-md-4">
-
-  </div>
-  <div class="col-md-4 text-center valign">
-    <a href="#" class="signup-button">about us</a>
-  </div>
-</div>
+</section>
 </body>
 
 <% include ../partials/footer %>

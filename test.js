@@ -12,7 +12,7 @@ db.user.find(19)
     .then(function(user){
       user.location='Seattle2';
       user.save();
-    })
+    // })
 
 //   // if (req.isAuthenticated()){
 //   //   var totalLanguages = [];

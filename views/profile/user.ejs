@@ -1,15 +1,15 @@
 <% include ../partials/header-logged.ejs %>
 <div class="row">
-  <div class="col-md-2">
+  <div class="col-md-2 col-xs-2">
   <img src="<%=imgUrl%>">
   </div>
-  <div class="col-md-4">
+  <div class="col-md-4 col-xs-4">
   <h2><%=userData.username%></h2>
   </div>
 </div>
 <hr>
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-6 col-xs-6">
   <div class="languages">
     <h2>Known Languages</h2>
     <ul class="language-list">
@@ -24,7 +24,7 @@
     </ul>
   </div>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-6 col-xs-6">
     <div class="userData">
     <h4> About <%=userData.username%></h4>
       <h5><%= profileData.bio %></h5>

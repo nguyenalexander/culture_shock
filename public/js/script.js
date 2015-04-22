@@ -29,6 +29,9 @@ $(function(){
     });
 });
 
+  $('.about-button').on('click',function(){
+    $(window).scrollTo($('#about'),800);
+  })
 });
 
 
