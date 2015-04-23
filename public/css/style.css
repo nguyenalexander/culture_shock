@@ -4,7 +4,7 @@ html {
 }
 
 body {
-  overflow:hidden;
+  overflow: auto;
 }
 
 .container {
@@ -13,10 +13,13 @@ body {
 /* MAIN PAGE CSS */
 #main {
   background-image: url('http://i.huffpost.com/gen/1902909/images/o-PEOPLE-TALKING-facebook.jpg');
-  background-size: 1366px 768px;
+  background-size: cover;
   background-repeat: no-repeat;
   max-height: 100%;
   max-width: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
 }
 
 .navbar-default {
@@ -78,7 +81,7 @@ body {
 }
 
 .valign {
-  margin-top: -75px;
+
 }
 
 @media (min-width: 768px) {
