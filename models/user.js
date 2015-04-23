@@ -3,6 +3,10 @@
 var bcrypt = require('bcrypt');
 var geocoder = require('geocoder');
 
+String.prototype.toProperCase = function () {
+  return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+};
+
 module.exports = function(sequelize, DataTypes) {
   var user = sequelize.define("user", {
     name: DataTypes.STRING,
@@ -61,6 +65,10 @@ module.exports = function(sequelize, DataTypes) {
           })
         }else{
           sendback(null,user)
+        }
+        if(user.name){
+          console.log(user.name.toProperCase())
+          user.name = user.name.toProperCase();
         }
       },
       beforeUpdate: function(user,options,sendback){

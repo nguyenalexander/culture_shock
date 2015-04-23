@@ -1,4 +1,23 @@
 <% include ../partials/header-logged.ejs %>
+
+<style>
+pre.ui-coordinates {
+  background:rgba(0,0,0,0.5);
+  position:absolute;
+  bottom:10px;
+  left:10px;
+  padding:5px 10px;
+  color:#fff;
+  font-size:11px;
+  line-height:18px;
+  border-radius:3px;
+  max-height:240px;
+  overflow:auto;
+  width:100px;
+  }
+</style>
+
+
 <div class="row">
   <div class="col-md-12 col-xs-12">
     <h1>connect</h1>
@@ -12,32 +31,35 @@
         <div class="modal fade bs-modal-lg" tabindex="-1" role="dialog" aria-labelledby="language-modal" aria-hidden="true">
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
-              <h2>users:</h2>
-                <ul>
-                <% userData.forEach(function(user){ %>
-                <% if (obj.id == user.languageId) {%>
-                  <li><a href="/profile/<%=user.userId%>"><%= user.username %></a></li>
-                <%}%>
-                <% }) %>
-                </ul>
+              <div class="row">
+                <div class="col-md-10 col-md-offset-2 col-xs-12">
+                  <h2>users:</h2>
+                  <ul>
+                  <% userData.forEach(function(user){ %>
+                  <% console.log(user) %>
+                  <% if (obj.id == user.languageId) {%>
+                    <li><a href="/profile/<%=user.userId%>"><%= user.username %></a></li>
+                  <%}%>
+                  <% }) %>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
       <% }) %>
-
-
-      <div id="mapCon">
-        <div id="map"></div>
-      </div>
-
     </div>
+  </div>
+  <div class="row map-row">
+    <div id="mapCon">
+      <div id="map"></div>
+      <pre id='coordinates' class='ui-coordinates'></pre>
+    </div>
+    <script>
+    var myPoints = <%- JSON.stringify(userData) %>;
+    drawMap(myPoints)
+    </script>
   </div>
 </div>
 
-   <script>
-    var myPoints = <%- JSON.stringify(userData) %>;
-    drawMap(myPoints)
-  </script>
 
-<% include ../partials/footer.ejs %>

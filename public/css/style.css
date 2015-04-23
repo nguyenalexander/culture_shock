@@ -1,5 +1,11 @@
 /* CSS THAT APPLIES TO ALL */
+html {
+  height: 100%;
+}
 
+.container {
+  height: 100%;
+}
 /* MAIN PAGE CSS */
 #main {
   background-image: url('http://i.huffpost.com/gen/1902909/images/o-PEOPLE-TALKING-facebook.jpg');
@@ -99,10 +105,55 @@ fieldset.title legend {
   height: 35%;
 }
 
+.about {
+  margin-top: 2.5%;
+}
+
+.about-title {
+  font-family: "HelveticaNeueThinExtended", "HelveticaNeue-Thin-Extended", "Helvetica Neue Thin Extended", "HelveticaNeueThin", "HelveticaNeue-Thin", "Helvetica Neue Thin", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosRegular', "Arial", sans-serif; font-weight:200; font-stretch:expanded;
+}
+
+.about-title-main {
+  font-family: "HelveticaNeueThinExtended", "HelveticaNeue-Thin-Extended", "Helvetica Neue Thin Extended", "HelveticaNeueThin", "HelveticaNeue-Thin", "Helvetica Neue Thin", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosRegular', "Arial", sans-serif; font-weight:200; font-stretch:expanded;
+  font-size: 46px;
+}
+
+.about-row {
+  margin-top: 3.1% ;
+  padding-bottom: 3%;
+}
+
+.about-dev-row {
+  padding-bottom: 3%;
+}
+
+.about-app-row {
+  padding-bottom: 3%;
+}
+
+.dev-title {
+  padding-right: 5%;
+}
+
+.about-title{
+  padding-right:5%;
+}
+
+.navbar-footer {
+  margin-top: 2%;
+  margin-bottom: 0;
+  background-color: rgba(0,0,0,.85);
+}
+
+div.navbar.navbar-default.navbar-footer {
+  height: 50px;
+}
+
 /* AUTH PAGE CSS */
 
 .signup-body {
   background-color: rgba(255,255,233,.1);
+  height: 100%;
 }
 
 .navbar-default .navbar-nav>li>.home {
@@ -125,11 +176,6 @@ fieldset.title legend {
   margin-top: 9.7%
 }
 
-.signup-row {
-  height: 100%;
-  width: 100%;
-  position: relative;
-}
 
 .signup-titles {
   font-size: 25px;
@@ -222,14 +268,19 @@ nav a:active {
 .dropdown-menu {
   display:none;
 }
+
+.map-row {
+  width: 725px;
+}
+
 #mapCon{
   display: visible;
   border: 2px black;
+  width: 100%;
 }
 #map{
   width:100%;
   height: 500px;
-
 }
 
 /* PROFILE CSS*/
