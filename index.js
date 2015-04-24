@@ -67,27 +67,6 @@ app.use(function(req,res,next){
   next();
 })
 
-
-//get user function
-// app.use(function(req,res,next){
-//   req.getUser = function(){
-//     res.locals.guser = req.session.user || false;
-//     // console.log(res.locals.guser)
-//     return res.locals.guser;
-//   }
-//   next();
-// });
-
-console.log('keys',process.env.FB_APP_ID,process.env.FB_SECRET)
-
-//storing get user output (boolean) as local object
-// app.use('*', function(req,res,next){
-//   var getUser = req.getUser();
-//   res.locals.getUser = getUser;
-//   next();
-// })
-
-//passport-facebook function
 passport.use(new FacebookStrategy({
     clientID: process.env.FB_APP_ID,
     clientSecret: process.env.FB_SECRET,
